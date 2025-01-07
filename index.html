@@ -8,7 +8,7 @@
 
     <title>PackML Learn: Basic Syllabus</title>
 
-    <meta name="author" content="Carl Bostrom">
+    <meta name="author" content="OMAC Sustainability Workgroup">
     <meta name="designer" content="Patrick Toohey">
 
     <meta name="description" content="PackML Implementation Guide: Sustainability">
@@ -38,7 +38,9 @@
             <h4 class="summary">Summary</h4>
             <p class="para">
                 This document describes a preliminary proposal for incorporating sustainabiltiy data into the PackML
-                data set ("PackTags").
+                data set ("PackTags"). Our end goal is to track all energy consumption of the packaging machine and,
+                combining this with known GHG data associated with the packaging materials themselves, arrive at a final
+                estimation of the GHG footprint per unit part.
             </p>
 
             <p class="para">
@@ -106,20 +108,20 @@
                     Throughout this document we will use the following formatting conventions:
                 </p>
 
-                <div class="key">
+                <!-- <div class="key">
                     <div class='key-highlight'><i class="fas fa-chalkboard-teacher"></i> </div>
                     <p class="comment">
                         Special instructions for trainers are given in italics and marked with an image of a teacher at
                         a chalkboard.
                     </p>
-                </div>
+                </div> -->
 
-                <div class="key">
+                <!-- <div class="key">
                     <div class='key-highlight'><i class="fas fa-bullseye"></i> </div>
                     <p class="para">
                         Learning objectives for each chapter are marked with a bullseye.
                     </p>
-                </div>
+                </div> -->
 
                 <div class="key">
                     <div class='key-highlight'><i class="fas fa-key"></i> </div>
@@ -128,37 +130,26 @@
                     </p>
                 </div>
 
-                <div class="key">
+                <!-- <div class="key">
                     <div class='key-highlight'><i class="fas fa-question"></i> </div>
                     <p class="para">
                         Suggestions for classroom discussion are marked with a question mark.
                     </p>
-                </div>
+                </div> -->
 
 
                 <div class="key">
                     <div class='key-highlight'><i class="fas fa-file"></i></div>
                     <p class="tr88">
-                        Text excerpted from ANSI/ISA-TR88.00.02-2015 will be shown in monospaced font and noted with the
+                        Text excerpted from ANSI/ISA-TR88.00.02-2022 will be shown in monospaced font and noted with the
                         document icon. </p>
                 </div>
 
                 <h3 id="Purpose">Supplemental content</h3>
 
                 <p class="para">
-                    This document describes a minimal set of topics to be covered by a basic introduction to PackML.
-                    Instructors
-                    are free to include any additional information, including vendor-specific information, deemed
-                    necessary.
                 </p>
 
-                <h3 id="Purpose">Content order</h3>
-
-                <p class="para">
-                    Topics are given in what the authors feel is a natural order, but the subject matter may be
-                    rearranged
-                    where required, especially with respect to any additional vendor-specific material.
-                </p>
 
             </div>
 
@@ -194,19 +185,45 @@
                     <h3 id="1_1_background">1.1 Background</h3>
 
                     <p class="para">
-                        Sustainability is a growing concern...
+                        In response to member input, OMAC established the Sustainability Workgroup earlier this year.
+                        Members raised concerns to our Technical Advisory Board - a group tasked to guide OMAC's
+                        technical direction - that the current PackML specification did not give sufficient guidance on
+                        the topic of sustainability. The immediate goals of the group are to identify a core set of
+                        machine parameters related to sustainability and then, in keeping with the design patterns of
+                        PackML that Rob just reviewed, provide naming conventions and hierarchical organization of that
+                        data. Some other questions we are looking at: Are the existing PackTags sufficient or will we
+                        need additional ones? Are there other organizations working in this space that we can harmonized
+                        our efforts with? We will revisit these ideas later, but first, let's take a few steps back and
+                        look at the sustainability landscape.
                     </p>
-
-
 
 
                     <!-- 1.2 Regulatory landscape -->
                     <h3 id="1_2_regulatory_landscape">1.2 Regulatory landscape</h3>
 
                     <p class="para">
-                        Describe the regulatory landscape...
+                        Sustainability is in the news. Headlines from around the world announce pending legislation
+                        regarding "climate reporting" or "sustainability reporting". A lot is happening, and it is
+                        happening now. Most of these headlines are from this year. Obviously, we will not have enough
+                        time to examine all of these - and we don't have sufficient expertise in any case - but let's
+                        look at one in particular, the EU's Corporate Sustainability Reporting Directive. CSRD supplants
+                        an earlier law, the Non-Financial Reporting Directive or NFRD from 2014. CSRD changes the
+                        earlier directive in three important ways. First, it broadens the scope of companies affected.
+                        Companies already subjected to NFRD must comply with the new law this year, meaning reports
+                        adhering to the new directive are due for these companies next year. Additional companies that
+                        will have to comply to CSRD will be phased-in over the coming years. Other large companies will
+                        have to report in 2026. Listed small and medium enterprises the following year. And non-EU
+                        companies doing sufficient business in Europe starting in 2029. (Roughly a large company is one
+                        with more than 500 employees; sufficient business means more than 150 million Euros.)
                     </p>
 
+                    <p class="para">
+                        Compared to NFRD, CSRD also puts real meat on the bones of the report. It provides for auditing,
+                        meaning that investors have some assurance that the reported data is accurate. (Sometimes you
+                        hear the word "greenwashing" - companies pretending to be green when they are not. The auditing
+                        mechanism is meant to prevent such fraudulent claims.) The reports must also conform to the EU
+                        sustainable reporting standards – ESRS – which is a kind of reporting framework.
+                    </p>
 
                     <!-- -->
                     <h3 id="1_3_packtags">1.3 PackTags</h3>
@@ -234,712 +251,156 @@
                     </p>
 
 
-                <!-- Terms -->
-                <div>
-                    <h2 id="2_terms">2. Terms and key concepts</h2>
-                    <hr class="black" />
+                    <!-- Terms -->
+                    <div>
+                        <h2 id="2_terms">2. Terms and key concepts</h2>
+                        <hr class="black" />
 
-                    <!-- -->
-                    <h3 id="2_1_packml">2.1 PackML</h3>
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-key"></i> </div>
-                        <p class="para">
-                            PackML: a communication interface for discrete manufacturing
-                            (e.g. packaging machinery) described by ANSI/ISA-TR88.00.02-2015; sometimes
+
+                        <p class="para" style="margin-top: 20px;">
+                            <b>PackML: </b>a communication interface for discrete manufacturing
+                            (e.g. packaging machinery) described by ANSI/ISA-TR88.00.02-2022; sometimes
                             used to describe additional methods of standardizing machine “look and
                             feel” or PLC coding design patterns.
                         </p>
-                    </div>
 
-                    <!-- -->
-                    <h3 id="2_2_machine_state">2.2 State or machine state</h3>
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-key"></i> </div>
                         <p class="para">
-                            State or machine state: the current status or condition of the system in consideration.
+                            <b>PackTags: </b>a set of naming conventions for software variables associated to data
+                            elements of the unit/machine. Where appropriate, the unit of measurement associated with an
+                            individual data element is specified.
                         </p>
-                    </div>
 
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-question"></i> </div>
                         <p class="para">
-                            a. Choose a machine and describe its states. For example, what are some states of an
-                            automobile?
+                            <b>Sustainability: </b>
                         </p>
-                    </div>
 
-                    <!-- -->
-                    <h3 id="2_3_state_model">2.3 State model</h3>
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-key"></i> </div>
                         <p class="para">
-                            State model (finite): an abstract model or machine that can be in exactly one of a finite
-                            number
-                            of states at any given time. The model may change or transition from one state to another
-                            in response to some input.
+                            <b>Greenhouse gasses (GHG): </b>
                         </p>
-                    </div>
 
-                    <figure>
-                        <img id="summary-packml-state-model" src="images/state_machine_turnstile.png" />
-                        <figcaption>
-                            Figure X. A turnstile may be modeled by a simple state machine with two states: locked and
-                            unlocked.
-                            If the turnstile is locked, inserting a coin will transition the turnstile to the unlocked
-                            state. Once unlocked, pushing
-                            the barrier forward will return it to the locked state.
-                        </figcaption>
-                    </figure>
-
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-question"></i> </div>
                         <p class="para">
-                            a. What happens if you push the turnstile barrier without inserting a coin? How is this
-                            feature
-                            represented in the diagram above?
+                            <b>ESG: </b> Generally, sustainability data falls within three categories: Environmental,
+                            Social and Governance. Social would cover things like work-place safety or human rights.
+                            Governance (note, not government - governance concerns how the company itself is run) would
+                            include things like executive compensation or how board elections are handled. From the
+                            point of view of our workgroup, these two topics, however important, are considered out of
+                            scope. We are focused solely on the machine level and the environment aspects of machine
+                            operation. So, we are focused on things like energy consumption, water use, waste
+                            management, carbon emissions and so on.
                         </p>
+
+                        <p class="para">
+                            <b>... </b>
+                        </p>
+
                     </div>
 
 
-                    <!-- -->
-                    <h3 id="2_4_isa88_physical_model">2.4 ISA-88 physical model</h3>
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-key"></i> </div>
+
+                    <!-- References -->
+                    <div>
+                        <h2 id="8_references">8. References</h2>
+                        <hr class="black" />
+
+                        <!-- -->
+                        <h3 id="8_1_standards">8.1 Standards</h3>
                         <p class="para">
-                            ISA-88 physical model: a hierarchy describing the physical assets of a commercial
-                            enterprise.
-                            See ANSI/ISA-S88.01-1995. In this model, a Process Cell comprises one or more Units
-                            responsible for producing a specific commodity.
+                            PackML is specified by standard ANSI/ISA-TR88.00.02-2022. It is available for purchase
+                            at <a href="www.isa.org">www.isa.org</a>.
+
                         </p>
+
+                        <!-- -->
+                        <h3 id="8_2_implementation_guides">8.2 Implementation guides</h3>
+                        <p class="para">
+                            The OMAC Packaging Workgroup is an ongoing effort to maximize the value of PackML. In
+                            addition to maintaining the standard itself, they have sponsored a number of implementation
+                            guides and whitepapers available here: <a
+                                href="https://omac.org/workgroups/packaging-workgroup/">
+                                omac.org/workgroups/packaging-workgroup/</a>.
+                        </p>
+                        <p class="para">
+                            In particular, for general advice on PackML implementation, see <b>PackML Unit/Machine
+                                Implementation
+                                Guide, <em>Part 1: PackML Interface State Manager</em></b>.
+                        </p>
+
+                        <p class="para">
+                            For a discussion of focusing on the design of human-machine interfaces, as well as an
+                            overview
+                            of the
+                            PackML stacklight standard, see <b>PackML Unit/Machine Implementation Guide, <em>Part 6:
+                                    PackML
+                                    HMIs -
+                                    User Interfaces, Stacklights and Push-Button Controls</em></b>.
+                        </p>
+
+                        <p class="para">
+                            New for 2021 is the <b>Practical Guide for Remote Access to Plant Equipment</b>. Here
+                            readers
+                            will find
+                            practical advice on a wide range of topics critical to IIoT and Industry 4.0: implementing a
+                            remote
+                            access plan, bridging the worlds of IT and OT, cyber-security and much more.
+                        </p>
+
+                        <p class="para">
+                            Additional training guides are also planned. Advanced topics such as recipe management,
+                            peer-to-peer
+                            communication, the PackML stacklight standard, as well as best practices described by the
+                            various
+                            implementation guides, will be covered.
+                        </p>
+
+
+                        <!-- -->
+                        <h3 id="8_4_iso_standards">8.4 ISO Standards</h3>
+                        <p class="para">
+                            The following ISO standards are directly or indirectly applicable:
+                        <ul>
+                            <li>ISO 14064, Parts 1-3 GHG Emissions Inventories and Verification</li>
+                            <li>ISO 18604 Packaging and the environment - Material recycling</li>
+                        </ul>
+                        </p>
+
+
+
                     </div>
 
-                    <figure>
-                        <img id="summary-packml-state-model" src="images/isa88_physical_model.png" />
-                        <figcaption>
-                            Figure X. The ISA-88 physical model describes the hierarchy of physical assets of a
-                            commercial enterprise. PackML essentially "lives" at the unit level and describes
-                            the overall status of the unit/machine (and its submodules).
-                        </figcaption>
-                    </figure>
+                    <!-- Appendix -->
+                    <div>
+                        <h2 id="9_appendix">Appendix</h2>
+                        <hr class="black" />
 
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-question"></i> </div>
-                        <p class="para">
-                            a. One of the units shown in the figure above is the Filler. Give an example of one of its
-                            (possible) equipment modules. Given an example of one of its control modules.
-                        </p>
+                        <!-- -->
+                        <h3 id="packml_state_model_color_chart">A.1 Appendix 1</h3>
 
-                        <p class="para">
-                            b. In the ISA-88 physical model, do the Enterprise and Site levels ever effectively
-                            coincide?
-                        </p>
+
+
+
+                        <div>
+                            <h2 id="VersionHistory">Version History</h2>
+                            <hr class="black" />
+                            <table id="version-log">
+                                <caption>Table 4: Version Log</caption>
+                                <tr class="grey">
+                                    <th width="20%">Date<br>[YYYY-MM-DD]</th>
+                                    <th>Initials</th>
+                                    <th>Description</th>
+                                    <th>Version</th>
+                                </tr>
+                                <tr>
+                                    <td>2024-12-04</td>
+                                    <td>CPB</td>
+                                    <td>First commit</td>
+                                    <td>0.0.1</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-
-                    <!-- -->
-                    <h3 id="2_5_machine_mode">2.5 Mode or machine mode</h3>
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-key"></i> </div>
-                        <p class="para">
-                            Mode (common meaning): a way or manner in which something occurs or is experienced,
-                            expressed or
-                            done.
-                        </p>
-                        <p class="para">
-                            Unit/machine control mode: a way or manner in which a manufacturing machine is used.
-                        </p>
-
-                        <p class="para">
-                            Mode manager: software that governs the transition from one machine mode to another.
-                        </p>
-                    </div>
-
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-question"></i> </div>
-                        <p class="para">
-                            a. Give some examples of packaging machine modes. In addition to packaging (or
-                            producing) product, what other intended uses for a packaging machine are there?
-                        </p>
-                    </div>
-
-                    <!-- -->
-                    <h3 id="2_6_packtags">2.6 PackTags</h3>
-
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-key"></i> </div>
-                        <p class="para">
-                            PackTags: a set of naming conventions for software variables associated to data elements of
-                            the unit/machine. Where appropriate, the unit of measurement associated with an individual
-                            data element is specified.
-                        </p>
-                    </div>
-
-
                 </div>
-
-
-
-                <!-- References -->
-                <div>
-                    <h2 id="8_references">8. References</h2>
-                    <hr class="black" />
-
-                    <!-- -->
-                    <h3 id="8_1_standards">8.1 Standards</h3>
-                    <p class="para">
-                        PackML is specified by standard ANSI/ISA-TR88.00.02-2015. It is available for purchase
-                        at <a href="www.isa.org">www.isa.org</a>.
-
-                    </p>
-
-                    <!-- -->
-                    <h3 id="8_2_implementation_guides">8.2 Implementation guides</h3>
-                    <p class="para">
-                        The OMAC Packaging Workgroup is an ongoing effort to maximize the value of PackML. In
-                        addition to maintaining the standard itself, they have sponsored a number of implementation
-                        guides and whitepapers available here: <a
-                            href="https://omac.org/workgroups/packaging-workgroup/">
-                            omac.org/workgroups/packaging-workgroup/</a>.
-                    </p>
-                    <p class="para">
-                        In particular, for general advice on PackML implementation, see <b>PackML Unit/Machine
-                            Implementation
-                            Guide, <em>Part 1: PackML Interface State Manager</em></b>.
-                    </p>
-
-                    <p class="para">
-                        For a discussion of focusing on the design of human-machine interfaces, as well as an overview
-                        of the
-                        PackML stacklight standard, see <b>PackML Unit/Machine Implementation Guide, <em>Part 6: PackML
-                                HMIs -
-                                User Interfaces, Stacklights and Push-Button Controls</em></b>.
-                    </p>
-
-                    <p class="para">
-                        New for 2021 is the <b>Practical Guide for Remote Access to Plant Equipment</b>. Here readers
-                        will find
-                        practical advice on a wide range of topics critical to IIoT and Industry 4.0: implementing a
-                        remote
-                        access plan, bridging the worlds of IT and OT, cyber-security and much more.
-                    </p>
-
-                    <p class="para">
-                        Additional training guides are also planned. Advanced topics such as recipe management,
-                        peer-to-peer
-                        communication, the PackML stacklight standard, as well as best practices described by the
-                        various
-                        implementation guides, will be covered.
-                    </p>
-
-
-                    <!-- -->
-                    <h3 id="8_3_videos">8.3 Instructional videos</h3>
-                    <p class="para">
-                        For a quick overview of the subject, see
-                        <a href="https://www.youtube.com/watch?v=CQS-R5COOLw">What is PackML?</a>
-                    </p>
-                    <p class="para">
-                        Individual technology providers or consultants may provide additional resources.
-                    </p>
-
-                    <!-- -->
-                    <h3 id="8_4_industry_publications">8.3 Industry publications</h3>
-                    <p class="para">
-                        <b>Arla Foods Reduces Packing Machine Integration Costs Using PackML</b>, Valentijn de Leeuw:
-                        <a
-                            href="https://www.arcweb.com/blog/arla-foods-reduces-packing-machine-integration-costs-using-packml">Link</a>
-                    </p>
-                    <p class="para">
-                        <b>Companies make the Case for PackML as industry standard</b>, Al Presher:
-                        <a
-                            href="https://www.packagingdigest.com/automation/companies-make-case-packml-industry-standard">Link</a>
-                    </p>
-
-                </div>
-
-                <!-- Appendix -->
-                <div>
-                    <h2 id="9_appendix">Appendix</h2>
-                    <hr class="black" />
-
-                    <!-- -->
-                    <h3 id="packml_state_model_color_chart">A.1 Color chart</h3>
-                    <figure>
-                        <img id="summary-packml-state-model" src="images/packml_state_model_color_chart.png" />
-                        <figcaption>
-                            Figure X. For reference the colors used in the figures from Chapter 3 are shown. Colors not
-                            marked are
-                            black or white. Note that the figures used in this document are non-normative.
-                        </figcaption>
-                    </figure>
-
-                    <h3 id="answers_to_suggested_questions">A.2 Answers to suggested questions</h3>
-
-                    <p class="para">
-                        1.1.a. What does it mean for machines to have a common "look and feel"?
-                    </p>
-                    <p class="comment">
-                        Here "look and feel" has no specific meaning. The long term goal is for human-machine interfaces
-                        to
-                        have enough points in common (e.g. navigation menus) so that users will be able to operate new
-                        machinery
-                        without an excessively steep learning curve.
-                    </p>
-
-                    <p class="para">
-                        1.1.b. Give an example of operational consistency.
-                    </p>
-                    <p class="comment">
-                        The machine starts when the Start button is pushed. PackML assigns to Start a specific meaning
-                        in terms
-                        of its effect on the PackML state model.
-                    </p>
-
-
-                    <p class="para">
-                        1.1.c. PackML has found application beyond packaging to discrete manufacturing generally. What
-                        is discrete manufacturing?
-                    </p>
-                    <p class="comment">
-                        Discrete manufacturing is the production of distinct items.
-                    </p>
-
-
-
-                    <p class="para">
-                        1.4.a. Give examples of data that might be passed from a machine to its supervisor.
-                    </p>
-                    <p class="comment">
-                        Current machine state, current speed, good/bad counts, alarm history, etc.
-                    </p>
-
-                    <p class="para">
-                        1.4.b. Give examples of data that might be passed between machine peers.
-                    </p>
-                    <p class="comment">
-                        Same answer as above, but perhaps with more emphasis on current machine state, speed or other
-                        data required to coordinate line activities.
-                    </p>
-
-
-                    <p class="para">
-                        1.5.a. Why is it critical to have naming conventions for the data included in the PackML
-                        data interface?
-                    </p>
-                    <p class="comment">
-                        The data must be identifiable and searchable. Identifying the data by tagname was a logical
-                        choice.
-                    </p>
-
-
-                    <p class="para">
-                        1.5.b. What other conventions regarding the data interface are required?
-                    </p>
-                    <p class="comment">
-                        All measured data (e.g. speed) must be associated with a unit a measure. Additional conventions
-                        regarding machine state are discussed further below.
-                    </p>
-
-                    <p class="para">
-                        1.6.a. In non-technical terms, give examples of common machine conditions or states (e.g.
-                        machine is running, error has occurred, etc.).
-                    </p>
-                    <p class="comment">
-                        Stopped, waiting to start, recipe complete, etc.
-                    </p>
-
-                    <p class="para">
-                        1.6.b. How does having a common understanding of machine state facilitate the creation of a
-                        standardized calculation for overall equipment effectiveness (OEE)?
-                    </p>
-                    <p class="comment">
-                        The calculation of availability requires us to distinguish between running and
-                        non-running conditions. Note that PackTags includes additional required data.
-                    </p>
-
-                    <p class="para">
-                        2.2.a. Choose a machine and describe its states. For example, what are some states of an
-                        automobile?
-                    </p>
-                    <p class="comment">
-                        Possible states would include parked, inoperable due to engine failure or other mechanical
-                        issue, stopped with engine idling, normal operation (moving at speed), etc.
-                    </p>
-
-                    <p class="para">
-                        2.3.a. What happens if you push the turnstile barrier without inserting a coin? How is this
-                        feature represented in the diagram above?
-                    </p>
-                    <p class="comment">
-                        Pushing on the turnstile barrier in the locked state has no effect. See the arc on the
-                        left side of the diagram.
-                    </p>
-
-
-                    <p class="para">
-                        2.4.a. One of the units shown in the figure above is the Filler. Give an example of one of its
-                        (possible) equipment modules. Given an example of one of its control modules.
-                    </p>
-                    <p class="comment">
-                        Filler equipment modules might be infeed, outfeed, pump bank, etc. A control module of
-                        the infeed might be the servo motor that drives the infeed starwheel, for example.
-                    </p>
-
-                    <p class="para">
-                        2.4.b. In the ISA-88 physical model, do the Enterprise and Site levels ever effectively
-                        coincide?
-                    </p>
-                    <p class="comment">
-                        If the corporation or enterprise has a single site, then perhaps the Enterprise and
-                        Site levels would coincide, but remember that off-site servers, for example, would
-                        be considered enterprise assets.
-                    </p>
-
-                    <p class="para">
-                        2.5.a. Give some examples of packaging machine modes. In addition to packaging (or
-                        producing)
-                        product, what other intended uses for a packaging machine are there?
-                    </p>
-                    <p class="comment">
-                        Additional possible modes would include maintenance or manual modes, cleaning modes
-                        or modes designed to execute specific testing or calibration.
-                    </p>
-
-
-                    <p class="para">
-                        3.1.a. Respond to this description of the PackML state machine: The PackML state tells you
-                        whether
-                        the machine is running (i.e. producing product) or not and, if not, why not. (Alternative:
-                        The main function of the PackML state machine is to characterize what the machine is doing
-                        when
-                        it is not producing product.)
-                    </p>
-                    <p class="comment">
-                        Question meant for open-ended discussion only.
-                    </p>
-
-
-                    <p class="para">
-                        3.2.a What strategic actions could be taken if it is observed that over a prolonged period
-                        (e.g. a month) a particular unit/machine is frequently paused in HELD state?
-                    </p>
-                    <p class="comment">
-                        Internal process conditions such as "low glue tank" or "carton tray low" cause the
-                        machine to stop in HELD state. Often such conditions require operator attention. If the
-                        machine is chronically in HELD state, additional training or supervision might be
-                        required. After evaluation, it might be determined that additional operators are
-                        required or that other logistical problems exist in the workflow.
-                    </p>
-
-
-                    <p class="para">
-                        3.3.a What strategic actions could be taken if it is observed that over an extended period (e.g.
-                        a
-                        month) a particular unit/machine is frequently paused in SUSPENDED state?
-                    </p>
-                    <p class="comment">
-                        SUSPENDED state indicates that the fault lies either with upstream or downstream equipment,
-                        or with the conveyance between them.
-                    </p>
-
-                    <p class="para">
-                        3.3.b. Give an example of a machine that might not implement the SUSPENDED state in Production
-                        mode.
-                    </p>
-                    <p class="comment">
-                        If starvation or blocked conditions cannot occur, then the SUSPENDED state may be omitted.
-
-                    </p>
-
-                    <p class="para">
-                        3.4.a If a unit/machine is in COMPLETE state, what steps must be taken next in the production
-                        cycle?
-                    </p>
-                    <p class="comment">
-                        Here COMPLETE would indicate that the recipe or batch process finished. Choose the next
-                        recipe/batch, reset and start.
-                    </p>
-
-                    <p class="para">
-                        3.5.a If a unit/machine is in IDLE state, what steps must be taken next in the production cycle?
-                    </p>
-                    <p class="comment">
-                        Start the machine.
-                    </p>
-
-                    <p class="para">
-                        3.6.a. If a unit/machine is in STOPPED state, what steps must be taken next in the production
-                        cycle?
-                    </p>
-                    <p class="comment">
-                        Reset, then start.
-                    </p>
-
-                    <p class="para">
-                        3.7.a. Beyond clearing errors and restarting the machine, what additional steps might be
-                        required if a unit/machine is in ABORTED state?
-                    </p>
-                    <p class="comment">
-                        Make sure that no hardware error has occurred. Possibly contact engineering or maintenance
-                        personnel.
-                    </p>
-
-                    <p class="para">
-                        3.10.a. Describe internal machine functions that might occur during Starting state.
-                    </p>
-                    <p class="comment">
-                        Machine synchronization, waiting for conveyors to come up to speed, alarm may sound, etc.
-                    </p>
-
-                    <p class="para">
-                        3.10.b. Describe internal machine functions that might occur during Aborting state.
-                    </p>
-                    <p class="comment">
-                        Moving components come to rest, remove air supply from pneumatic actuators, etc.
-                    </p>
-
-                    <p class="para">
-                        3.13.a. On a given machine it is determined that while in STARTING state all servo axes
-                        should synchronize with the master axis and all conveyors should begin to run.
-                        In general terms, what would the associated state complete condition look like?
-                    </p>
-                    <p class="comment">
-                        State complete would be set to true once all axes had successfully moved to their
-                        synchronous position and once all conveyors had achieved an appropriate speed.
-                    </p>
-
-                    <p class="para">
-                        4.1.a. ANSI/ISA-TR88.00.02-2015 tacitly assumes that Production mode always be supported
-                        in any
-                        PackML implementation.
-                        Why is this assumption natural and/or justified?
-                    </p>
-                    <p class="comment">
-                        Machines use for discrete manufacturing produce something. While producing, then
-                        are in production mode.
-                    </p>
-
-                    <p class="para">
-                        4.2.a. Why is SUSPENDED state typically not included in Maintenance mode?
-                    </p>
-                    <p class="comment">
-                        In Maintenance mode the machine is typically working independent of upstream or
-                        downstream conditions or equipment.
-                    </p>
-
-                    <p class="para">
-                        4.2.b. Why is COMPLETE state typically not included in Maintenance mode?
-                    </p>
-                    <p class="comment">
-                        The troubleshooting activities often associated with Maintenance mode do not typically
-                        have a pre-defined point of completion. (Note that product counters associated
-                        with a given recipe or batch should not be active while in Maintenance mode.)
-                    </p>
-
-
-                    <p class="para">
-                        4.3.a. A capping machine includes functionality to manually run the cap feed system.
-                        Would it make sense to include the HELD state in Manual mode in this case?
-                    </p>
-                    <p class="comment">
-                        Possibly, especially if the loss of caps in the feed path would cause physical damage.
-                    </p>
-
-                    <p class="para">
-                        4.5.a. A packaging machine includes a Cleaning mode cycle that should be executed
-                        automatically
-                        once per hour during
-                        a production run. How would you suggest managing this mode transition? Would it make
-                        sense
-                        to allow such a
-                        mode transition to occur while in Execute state?
-                    </p>
-                    <p class="comment">
-                        A mode transition in Execute state is allowed and in this case may make sense.
-                    </p>
-                </div>
-
-
-                <h3 id="A_3_structured_data_types">A.3 Structured data types</h3>
-
-                <div class="key">
-                    <div class='key-highlight'><i class="fas fa-chalkboard-teacher"></i> </div>
-                    <p class="comment">
-                        Instructors: The structure data types that comprise the rest of the PackTags
-                        definition are
-                        listed here
-                        for reference.
-                    </p>
-                </div>
-
-
-                <h3 id="A_3_1_interface">A.3.1 Interface</h3>
-
-                <div class="key">
-                    <div class='key-highlight'><i class="fas fa-file"></i> </div>
-                    <p class="tr88">
-                        Interface – is a collection of tags that are used to describe communication command
-                        values
-                        between machines using the PackTag structure.
-                    </p>
-                    <p class="tr88-ref">
-                        ANSI/ISA-TR88.00.02-2015, 7.4.1 Structured data types (p. 32)
-                    </p>
-                </div>
-
-                <figure>
-                    <img id="summary-packml-state-model" src="images/packtags_interface_type.png" />
-                    <figcaption>
-                        Figure X. Sample definition of Interface data type.
-                    </figcaption>
-                </figure>
-
-                <!-- -->
-                <h3 id="A_3_2_descriptor">A.3.2 Descriptor</h3>
-
-                <div class="key">
-                    <div class='key-highlight'><i class="fas fa-file"></i> </div>
-                    <p class="tr88">
-                        Descriptor structure – is a collection of tags that are used to describe parameters
-                        in the
-                        machine unit.
-                    </p>
-                    <p class="tr88-ref">
-                        ANSI/ISA-TR88.00.02-2015, 7.4.1 Structured data types (p. 32)
-                    </p>
-                </div>
-
-                <figure>
-                    <img id="summary-packml-state-model" src="images/packtags_descriptor_type.png" />
-                    <figcaption>
-                        Figure X. Sample definition of Descriptor data type.
-                    </figcaption>
-                </figure>
-
-                <!-- -->
-                <h3 id="A_3_3_product">A.3.3 Product</h3>
-                <div class="key">
-                    <div class='key-highlight'><i class="fas fa-file"></i> </div>
-                    <p class="tr88">
-                        Product structure – is a collection of tags used to describe the product that the
-                        machine is
-                        making.
-                    </p>
-                    <p class="tr88-ref">
-                        ANSI/ISA-TR88.00.02-2015, 7.4.1 Structured data types (p. 32)
-                    </p>
-                </div>
-
-                <figure>
-                    <img id="summary-packml-state-model" src="images/packtags_product_type.png" />
-                    <figcaption>
-                        Figure X. Sample definition of the Product data type.
-                    </figcaption>
-                </figure>
-
-                <!-- -->
-                <h3 id="A_3_4_ingredient">A.3.4 Ingredient</h3>
-
-                <div class="key">
-                    <div class='key-highlight'><i class="fas fa-file"></i> </div>
-                    <p class="tr88">
-                        Ingredient – is a collection of tags used to describe the raw materials that are
-                        needed for
-                        the product.
-                    </p>
-                    <p class="tr88-ref">
-                        ANSI/ISA-TR88.00.02-2015, 7.4.1 Structured data types (p. 32)
-                    </p>
-                </div>
-
-                <figure>
-                    <img id="summary-packml-state-model" src="images/packtags_ingredient_type.png" />
-                    <figcaption>
-                        Figure X. Sample definition of the Ingredient data type.
-                    </figcaption>
-                </figure>
-
-
-                <!-- -->
-                <h3 id="A_3_5_alarm">A.3.5 Alarm</h3>
-                <div class="key">
-                    <div class='key-highlight'><i class="fas fa-file"></i> </div>
-                    <p class="tr88">
-                        Alarm – is the collection tags needed to describe alarm events.
-                    </p>
-                    <p class="tr88-ref">
-                        ANSI/ISA-TR88.00.02-2015, 7.4.1 Structured data types (p. 32)
-                    </p>
-                </div>
-                <figure>
-                    <img id="summary-packml-state-model" src="images/packtags_alarm_type.png" />
-                    <figcaption>
-                        Figure X. Sample definition of the Alarm data type.
-                    </figcaption>
-                </figure>
-
-                <!-- -->
-                <h3 id="A_3_6_count">A.3.6 Count</h3>
-                <div class="key">
-                    <div class='key-highlight'><i class="fas fa-file"></i> </div>
-                    <p class="tr88">
-                        See examples Admin.ProdProcessedCount, Admin.ProdDefectiveCount,
-                        Admin.ProdConsumedCount.
-                    </p>
-                    <p class="tr88-ref">
-                        ANSI/ISA-TR88.00.02-2015, 7.5.3.14 Admin.ProdConsumedCount (p. 70)
-                    </p>
-                </div>
-                <figure>
-                    <img id="summary-packml-state-model" src="images/packtags_count_type.png" />
-                    <figcaption>
-                        Figure X. Sample definition of the Count data type.
-                    </figcaption>
-                </figure>
-
-                <!-- -->
-                <h3 id="A_3_7_equipment_interlock">A.3.7 Equipment interlock</h3>
-                <div class="key">
-                    <div class='key-highlight'><i class="fas fa-file"></i> </div>
-                    <p class="tr88">
-                        See example Status.EquipmentInterlock.
-                    </p>
-                    <p class="tr88-ref">
-                        ANSI/ISA-TR88.00.02-2015, 7.5.2.10 Status.EquipmentInterlock.Blocked (p. 56)
-                    </p>
-                </div>
-                <figure>
-                    <img id="summary-packml-state-model" src="images/packtags_equipmentinterlock_type.png" />
-                    <figcaption>
-                        Figure X. Sample definition of the EquipmentInterlock data type.
-                    </figcaption>
-                </figure>
-
             </div>
-
-
-            <div>
-                <h2 id="VersionHistory">Version History</h2>
-                <hr class="black" />
-                <table id="version-log">
-                    <caption>Table 4: Version Log</caption>
-                    <tr class="grey">
-                        <th width="20%">Date<br>[YYYY-MM-DD]</th>
-                        <th>Initials</th>
-                        <th>Description</th>
-                        <th>Version</th>
-                    </tr>
-                    <tr>
-                        <td>2024-12-04</td>
-                        <td>CPB</td>
-                        <td>First commit</td>
-                        <td>0.0.1</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    </div>
-    <footer><a href="#contents">PackML Implemenation Guide, Sustainability (DRAFT) 0.0.1</a></footer>
+            <footer><a href="#contents">PackML Implemenation Guide, Sustainability (DRAFT) 0.0.1</a></footer>
 </body>
 
 </html>
