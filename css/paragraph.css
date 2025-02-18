@@ -1,25 +1,25 @@
-.para{
+.para {
     text-align: justify;
 }
 
-.comment{
+.comment {
     text-align: justify;
     font-style: italic;
 }
 
-.tr88{
+.tr88 {
     text-align: justify;
     font-family: 'Courier New', Courier, monospace;
 }
 
-.tr88-ref{
+.tr88-ref {
     text-align: right;
     font-family: 'Courier New', Courier, monospace;
     font-style: italic;
     font-size: 100%;
 }
 
-.key{
+.key {
     text-align: justify;
     border: gray solid 1pt;
     padding: 0 12pt 0 12pt;
@@ -27,7 +27,7 @@
     margin-top: 36pt;
 }
 
-.key-highlight{
+.key-highlight {
     font-size: 22pt;
     position: relative;
     margin: -20px 0 0 20px;
@@ -36,10 +36,20 @@
     text-align: center;
 }
 
-.list{
+.list {
     font-size: 1.4em;
 }
 
-.author{
+.author {
     color: #0070C0;
+}
+
+table.packtags td{
+    font-size: 1.4em;
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+table.packtags {
+    width: 100%
 }

@@ -78,6 +78,14 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="#3_energy" class="section">3. Energy</a>
+                    <ul>
+                        <li><a href="#3_1_overview" class="subsection">3.1 Overview</a></li>
+                        <li><a href="#3_2_type_energy" class="subsection">3.2 TYPE Energy</a></li>
+                    </ul>
+                </li>
+
 
                 <li>
                     <a href="#8_references" class="section">8. References</a>
@@ -145,10 +153,6 @@
                         document icon. </p>
                 </div>
 
-                <h3 id="Purpose">Supplemental content</h3>
-
-                <p class="para">
-                </p>
 
 
             </div>
@@ -163,23 +167,6 @@
                     <h2 id="1_introduction">1. Introduction</h2>
                     <hr class="black" />
 
-                    <div class="key">
-                        <div class='key-highlight'><i class="fas fa-bullseye"></i> </div>
-                        <p class="para">
-                            Chapter 1 is intended to give students an overview of the basic concepts and development
-                            history of PackML.
-                        </p>
-                        <p class="para">
-                            After completing the chapter, students should have an understanding of what motivated the
-                            development of PackML and its main benefits.
-                        </p>
-
-                        <p class="para">
-                            Chapter 1 is optional. If students are sufficiently familiar with the topics described
-                            in this chapter, or at the discretion of the instructor, this material may be skipped.
-                        </p>
-
-                    </div>
 
                     <!-- 1.1 PackML goals -->
                     <h3 id="1_1_background">1.1 Background</h3>
@@ -228,14 +215,14 @@
                     <!-- -->
                     <h3 id="1_3_packtags">1.3 PackTags</h3>
 
-                    <figure>
+                    <!-- <figure>
                         <img id="summary-packml-state-model" src="images/packtags_general_scope.png" />
                         <figcaption>
                             Figure X. PackTags form the data interface described in the previous section. A partial
                             listing
                             of the type of data included in the interface is shown.
                         </figcaption>
-                    </figure>
+                    </figure> -->
 
                     <p class="para">
                         Give an overview of the set PackTags and provide some justification for wanting new tags for
@@ -292,6 +279,106 @@
                         <p class="para">
                             <b>... </b>
                         </p>
+
+                    </div>
+
+                    <!-- Energy -->
+                    <div>
+                        <h2 id="3_energy">3. Energy</h2>
+                        <hr class="black" />
+
+
+                        <!-- -->
+                        <h3 id="3_1_overview">3.1 Overveiw</h3>
+
+
+                        <p class="para">
+                            An OEE criteria may be introduced about the energy. This is a proposal for a new set of
+                            PackML Tag about the report of Energy efficiency.
+                            Since PackML’s scope is to enhance the efficiency, consistency, and interoperability of
+                            packaging and processing machinery, ultimately leading to more robust and reliable
+                            production systems, a straightforward face of energy consumption is, today, a must.
+                            The standardization of a standard set of consumption tags offers several key benefits:<br />
+                            • Cost Savings: With a clear understanding of energy usage, businesses can implement
+                            measures to reduce their energy bills.<br />
+                            • Improved Energy Efficiency: These reports help identify areas where energy is wasted by
+                            providing detailed insights into energy usage patterns. This allows for targeted
+                            improvements and optimizations, reducing energy consumption and cost savings.<br />
+                            • Enhanced Monitoring and Control: Real-time energy consumption reports allow for continuous
+                            energy use monitoring and control.<br />
+                            • Informed Decision-Making: Access to comprehensive energy data enables organizations to
+                            make better decisions. It supports planning and investment in energy-efficient technologies
+                            and practices.<br />
+                            • Regulatory Compliance: Many regions have regulations and standards for energy consumption.
+                            Easy access to energy reports ensures businesses comply with these regulations, avoiding
+                            potential fines and enhancing their reputation.<br />
+                            • Environmental Impact: Reducing energy consumption directly contributes in mitigating
+                            climate change and promoting a healthier environment.<br />
+
+                        </p>
+
+
+                        <h3 id="3_2_type_energy">3.1 TYPE Energy</h3>
+
+
+                        <table class="packtags">
+                            <tr style="font-weight: 700">
+                                <td>Tag</td>
+                                <td>Type</td>
+                                <td width="50%">Comment</td>
+                            </tr>
+                            <tr>
+                                <td>Category</td>
+                                <td>[DINT]</td>
+                                <td>0=Electrical<br />
+                                    1=Compressed Air<br />
+                                    2=Steam<br />
+                                    3=Chilled Water<br />
+                                    4=Heated Water<br />
+
+                                    0..999 = (reserved)<br />
+                                    1000.. = (user-defined)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ID</td>
+                                <td>[DINT]</td>
+                                <td>User-defined energy point identifier <br />
+                                    <br />
+                                    Example: <br />
+                                    ID = 0 => Main supply <br />
+                                    ID = 10 => Pump 1
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>[STRING]</td>
+                                <td>User-defined meta data</td>
+                            </tr>
+                            <tr>
+                                <td>Unit</td>
+                                <td>[STRING(6)]</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Value</td>
+                                <td>[REAL]</td>
+                                <td>Measured value</td>
+                            </tr>
+                            <tr>
+                                <td>Period</td>
+                                <td>[DINT]</td>
+                                <td>Sample period in seconds </td>
+                            </tr>      
+                        </table>
+
+                        <!-- <table class="packtags">
+                            <tr style="font-weight: 700">
+                                <td>Emil</td>
+                                <td>TAG NAME</td>
+                                <td>DATA TYPE</td>
+                            </tr>
+                        </table> -->
 
                     </div>
 
